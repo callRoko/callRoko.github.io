@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "**Multiple Comparisons**"
-date:       2019-08-29 15:45:19 +0000
+date:       2019-08-29 11:45:20 -0400
 permalink:  multiple_comparisons
 ---
 
