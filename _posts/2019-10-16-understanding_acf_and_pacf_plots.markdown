@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Understanding ACF and PACF Plots"
-date:       2019-10-16 14:52:33 +0000
+date:       2019-10-16 10:52:34 -0400
 permalink:  understanding_acf_and_pacf_plots
 ---
 
@@ -20,7 +20,7 @@ The AR process of order lag p is found using:
                                                           y = c +Φt-1*yt-1 + Φt-2*yt-2+...+Φt-p*yt-p+ε(t)
 Ε(t) is the white noise and the y_t-1 and y_t-2 are the lags. Order p is the lag value after which the PACF plot passes the upper confidence band for the first time. These p lags will act as the number of features used to forecast the AR time series. We can't use the ACF plot for this process because it will show good correlations for lags well into the past. If we use this plot, the model will have too many features and multicollinear issues will arise. This is not an issue for PACF plots because it removes components already explained by earlier lags, so we only get lags that are correlated to the residuals.
 
-For example, in the Zillow time series analysis that I recently conducted for Greeley, CO, I found the order of the AR order from a PACF plot: 
+For example, in the Zillow time series analysis that I recently conducted for Grand Prarie, TX, I found the order of the AR order from a PACF plot: 
 ```
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 def acf_pacf(df, alags=48, plags=48):
@@ -31,7 +31,7 @@ def acf_pacf(df, alags=48, plags=48):
     #PACF plot
     plot_pacf(df, lags=plags, ax=ax2)
     plt.show()
-acf_pacf(TS_80631d)
+acf_pacf(TS_75052)
 ```
  https://www.dropbox.com/s/0z9m8z436f8s688/Screenshot%202019-10-16%2009.57.11%20%28edited-Pixlr%29.jpg?dl=0
 From this PACF plot, we can see a statistically significant lag at 0 or the present value and another lag at one or two so the AR’s p order is one. Most of the other lags are not significant because they are within the confidence band.
